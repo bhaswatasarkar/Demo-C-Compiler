@@ -1,0 +1,30 @@
+S -> ID eq_op OPERAND ;
+S ->  var BINARY_OP ;
+S -> do { STATEMENT } while ( EXPRESSION ) ;
+S -> if ( EXPRESSION ) { STATEMENT }
+S -> get ( var ) ;
+S -> put ( OUTPUTS ) ;
+S -> break ;
+S -> continue ;
+S-> OPERAND UNARY_OP ARITHMETIC_EXPRESSION ;
+
+ID -> var NEW
+NEW -> ( TYPE ) NEW | #
+
+OPERAND -> var | const
+
+TYPE -> int | float | char
+
+OUTPUTS -> str | const | var
+
+ARITHMETIC_EXPRESSION -> OPERAND | OPERAND UNARY_OP ARITHMETIC_EXPRESSION
+
+RELATIONAL_OP -> gt_op | lt_op | ge_op | lt_op
+
+BINARY_OP -> incre_op | decre_op
+
+STATEMENT -> S STATEMENT | S
+
+EXPRESSION -> OPERAND RELATIONAL_OP OPERAND
+
+

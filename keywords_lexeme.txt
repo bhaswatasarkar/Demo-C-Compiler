@@ -1,0 +1,32 @@
+/----*****----keywords----***-----/
+
+break : break
+char : char
+continue : continue
+do : do
+else : else
+float : float
+if : if
+int : int
+struct : struct
+while : while
+gets : gets
+puts : puts
+/---******--Arithmetic operators---*****---/
++ : add_op
+- : sub_op
+++ : incre_op
+-- : decre_op
+
+/--*******--Relational operators--*****--/
+> : gt_op
+< : lt_op
+>= : ge_op
+<= : lt_op
+/--*******--Assignment operators--*****--/
+= : eq_op
+
+/--*******--Others--*****--/
+string literals : str
+constants : const
+variables/identifiers : var
