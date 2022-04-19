@@ -27,6 +27,7 @@ puts : puts
 = : eq_op
 
 /--*******--Others--*****--/
-string literals : str
+string literals : str/////////////////////
 constants : const
 variables/identifiers : var
+; : ;

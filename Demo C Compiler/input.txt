@@ -1,0 +1,7 @@
+main (){
+y=0;
+do {
+    a=b;
+}
+while(x>y);
+}
