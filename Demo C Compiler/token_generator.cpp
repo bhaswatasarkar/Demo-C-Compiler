@@ -19,7 +19,7 @@ bool isCondition1(char ch){
     || ch=='}' || ch=='(' || ch==')' || ch=='[' || ch==']' || ch=='=' || ch=='>' || ch=='<');
 }
 
-isnumber(string str){
+bool isnumber(string str){
     int i;
     for(i=0;i<str.length();i++){
         if(!isdigit(str[i]))
@@ -36,7 +36,7 @@ void start(char ch){
         dfa = 1;
     }
     else 
-      dfa=0;
+        final(ch);
 }
 
 //state1
@@ -60,14 +60,14 @@ void final(char ch){
         addToken(s);//passing ch
         dfa = 2;
     }
-    else if(constr.length()==0 && (ch=='('||ch=='{'||ch=='['||ch==')'||ch=='}'||ch==']')){
-        addToken(s);//passing ch
-        dfa = 2;
-    }
-    else
+    else if((ch>=97 && ch<=122)||(ch>=65 && ch<=90) || (isdigit(ch)==true))
     {
         constr=constr+ch;
         dfa = 1;
+    }
+    else{
+        addToken(s);//passing ch
+        dfa = 2;
     }
 }
 
@@ -145,6 +145,7 @@ int main(){
 
     while(myfile){
         ch = myfile.get();
+        if(ch==-1)break;
         if(ch==' '||ch=='\n')
             continue;
         if(dfa==0)
@@ -162,4 +163,3 @@ int main(){
  
 
 }
-
