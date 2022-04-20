@@ -18,7 +18,7 @@ OUTPUTS -> str | const | var
 
 ARITHMETIC_EXPRESSION -> OPERAND | OPERAND UNARY_OP ARITHMETIC_EXPRESSION
 
-RELATIONAL_OP -> gt_op | lt_op | ge_op | lt_op
+RELATIONAL_OP -> gt_op | lt_op | ge_op | le_op
 
 BINARY_OP -> incre_op | decre_op
 

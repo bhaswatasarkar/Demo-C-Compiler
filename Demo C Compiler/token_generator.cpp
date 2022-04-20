@@ -1,18 +1,24 @@
 #include <iostream>
 #include <fstream>
-#include <string>
 #include <vector>
-#include <cstring>
+#include <string>
+#include <unordered_map>
+#include <utility>
+#include <set>
+#include <algorithm>
+#include <cstdlib>
 using namespace std;
 
 string constr="";
-int dfa=0;
+int dfa=0,depth=0;
 vector<string> token_list;
 
 void addToken(string);
 void start(char);
 void state1(char);
 void final(char);
+
+unordered_map<string, int> symbol_table;
 
 bool isCondition1(char ch){
     return (ch==',' || ch==';' || ch=='\'' || ch=='+' || ch=='*' || ch=='-' || ch == '{'
@@ -112,10 +118,14 @@ void addToken(string str){
         token_list.push_back("(");
     else if(str==")")
         token_list.push_back(")");
-    else if(str=="{")
+    else if(str=="{"){
         token_list.push_back("{");
-    else if(str=="}")
+        depth++;
+    }
+    else if(str=="}"){
         token_list.push_back("}");
+        depth--;
+    }
     else if(str=="[")
         token_list.push_back("[");
     else if(str=="]")
@@ -123,8 +133,10 @@ void addToken(string str){
     else {
         if(isnumber(str))
             token_list.push_back("const");
-        else
+        else{
             token_list.push_back("var");
+            symbol_table[str]=depth;
+        }
     }
     
     
@@ -157,8 +169,15 @@ int main(){
             final(ch);
     }
     }
+
+    token_list.pop_back();
     for(auto e: token_list){
         cout<<e<<endl;
+    }
+
+    cout<<"Symbol table"<<endl;
+    for(auto e:symbol_table){
+        cout<<e.first<<" : "<<e.second<<endl;
     }
  
 
